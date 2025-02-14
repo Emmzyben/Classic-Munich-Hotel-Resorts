@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Classic Munich Hotel Resorts</title>
+    <link rel="shortcut icon" href="logo.jpg" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/f0fb58e769.js" crossorigin="anonymous"></script>
+    <style>
+        #header {
+            display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;
+            background-color: #730134; color: #fff;
+        }
+        #header > div {
+            width: 33.33%; text-align: center;
+        }
+        #header img {
+            width: 100px;
+            height: 100px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        table, th, td {
+            border-collapse: collapse; font-weight: bold; padding: 10px;
+        }
+        th {
+            background-color: #730134; color: #fff; cursor: pointer;
+        }
+        table {
+            width: 100%; padding: 10px;
+        }
+        tbody tr:hover {
+            background-color: #f4e1f7;
+        }
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+        .dark-mode th {
+            background-color: #444;
+        }
+        .toggle-btn {
+            margin: 20px;
+            padding: 10px 20px;
+            background: #730134;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div><img src="logo.jpg" alt=""></div>
+        <div><h2>Classic Munich Hotel & Resorts</h2></div>
+<div>
+          <a href="prices.html" style="text-decoration: none;"><i class="fa fa-home" style="font-size:25px;;padding: 5px;background-color: #fff;color: #730134;border-radius: 6px;"></i></a>
+          </div>    </div>
+
+
+    <div style="margin: 20px;background-color: rgb(255, 255, 255);border-radius: 10px;padding: 10px;">
+        <h2>Vendors</h2>
+<table id="roomsTable">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Suya vendor</td></tr>
+        <tr><td>ice cream/cocktail vendor</td></tr>
+        <tr><td>Nkwobi vendor</td></tr>
+        <tr><td>Barbecue fish vendor</td></tr>
+        <tr><td>Smoothie fish vendor</td></tr>
+    </tbody>
+</table>
+    </div>
+
+
+<script>
+    function sortTable(column, tableId) {
+        let table = document.getElementById(tableId);
+        let rows = Array.from(table.rows).slice(1);
+        let sortedRows = rows.sort((rowA, rowB) => {
+            let cellA = rowA.cells[column].textContent.trim().replace(/[₦,]/g, '');
+            let cellB = rowB.cells[column].textContent.trim().replace(/[₦,]/g, '');
+            return isNaN(cellA) ? cellA.localeCompare(cellB) : cellA - cellB;
+        });
+        
+        table.tBodies[0].append(...sortedRows);
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        function animateNumbers(element, start, end, duration) {
+            let range = end - start;
+            let current = start;
+            let increment = range / (duration / 10);
+            let stepTime = 10;
+            let timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                element.textContent = `₦${Math.round(current).toLocaleString()}`;
+            }, stepTime);
+        }
+
+        function startCounter() {
+            let tables = ["roomsTable", "hallsTable", "openSpaceTable"];
+            tables.forEach(tableId => {
+                let table = document.getElementById(tableId);
+                if (table) {
+                    let rows = table.querySelectorAll("tbody tr");
+                    rows.forEach(row => {
+                        let cell = row.cells[1];
+                        if (cell) {
+                            let value = parseInt(cell.textContent.replace(/[₦,()a-zA-Z ]/g, ""), 10);
+                            if (!isNaN(value)) {
+                                cell.textContent = "₦0";
+                                animateNumbers(cell, 0, value, 2000);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        startCounter();
+    });
+
+</script>
+</body>
+</html>

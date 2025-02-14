@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Classic Munich Hotel Resorts</title>
+    <link rel="shortcut icon" href="logo.jpg" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/f0fb58e769.js" crossorigin="anonymous"></script>
+    <style>
+        #header {
+            display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;
+            background-color: #730134; color: #fff;
+        }
+        #header > div {
+            width: 33.33%; text-align: center;
+        }
+        #header img {
+            width: 100px;
+            height: 100px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        table, th, td {
+             
+            border-collapse: collapse; font-weight: bold; padding: 10px;
+        }
+        th {
+            background-color: #730134; color: #fff; cursor: pointer;
+        }
+        table {
+            width: 100%; padding: 10px;
+        }
+        tbody tr:hover {
+            background-color: #f4e1f7;
+        }
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+        .dark-mode th {
+            background-color: #444;
+        }
+        .toggle-btn {
+            margin: 20px;
+            padding: 10px 20px;
+            background: #730134;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div><img src="logo.jpg" alt=""></div>
+        <div><h2>Classic Munich Hotel & Resorts</h2></div>
+<div>
+          <a href="prices.html" style="text-decoration: none;"><i class="fa fa-home" style="font-size:25px;;padding: 5px;background-color: #fff;color: #730134;border-radius: 6px;"></i></a>
+          </div>    </div>
+
+    <div style="margin: 20px;background-color: #fff;border-radius: 10px;padding: 10px;">
+<h2>FACILITIES</h2>
+<table id="hallsTable">
+    <thead>
+        <tr>
+            <th onclick="sortTable(0, 'hallsTable')">FACILITY</th>
+            <th onclick="sortTable(1, 'hallsTable')">CAPACITY</th>
+            <th onclick="sortTable(2, 'hallsTable')">CHARGES</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Esther Hall</td>
+            <td>Custom</td>
+            <td>₦950,000</td></tr>
+        <tr><td>Berlin Hall</td>
+            <td>
+               <p>Banquet = 80</p> 
+               <p>Conference = 100</p> 
+            </td>
+            <td>₦350,000</td>
+        </tr>
+        <tr><td>Dublin Hall </td>
+            <td>
+                <p>Banquet = 100</p> 
+                <p>Conference = 120</p> 
+            </td>
+            <td>₦400,000</td></tr>
+    </tbody>
+</table>
+</div>
+
+<div style="margin: 20px;background-color: #fff;border-radius: 10px;padding: 10px;">
+    <table id="hallsTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0, 'hallsTable')">FACILITY</th>
+                <th onclick="sortTable(1, 'hallsTable')">CHARGES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>GYM</td><td>₦1000 daily/ ₦20,000 monthly</td></tr>
+            <tr><td>ADULT POOL</td><td>₦2000 daily</td></tr>
+            <tr><td>CHILDREN POOL</td><td>₦1000 daily</td></tr>
+            <tr><td>CHILDREN PLAYGROUND</td><td>₦1000 per ticket</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>
