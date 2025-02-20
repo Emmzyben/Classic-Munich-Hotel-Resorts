@@ -81,7 +81,10 @@ table{
         flex-direction: row;flex-wrap: wrap;
     }
     #services>div{
-        width: 25%;margin: 20px; 
+        width: 40%; 
+    }
+    #services img{
+        width: 100px;height: 100px;
     }
 #header h2{
     display: none;

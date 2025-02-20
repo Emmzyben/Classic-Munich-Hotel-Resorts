@@ -76,70 +76,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr><td>Medium size fish</td><td>15,000</td></tr>
-        <tr><td>Large Fish</td><td>20,000</td></tr>
-        <tr><td>Extra Large Fish</td><td>25,000</td></tr>
+        <tr><td>Medium size fish</td><td>#15000</td></tr>
+        <tr><td>Large Fish</td><td>#20000</td></tr>
+        <tr><td>Extra Large Fish</td><td>#25000</td></tr>
     </tbody>
 </table>
     </div>
 
 
-<script>
-    function sortTable(column, tableId) {
-        let table = document.getElementById(tableId);
-        let rows = Array.from(table.rows).slice(1);
-        let sortedRows = rows.sort((rowA, rowB) => {
-            let cellA = rowA.cells[column].textContent.trim().replace(/[₦,]/g, '');
-            let cellB = rowB.cells[column].textContent.trim().replace(/[₦,]/g, '');
-            return isNaN(cellA) ? cellA.localeCompare(cellB) : cellA - cellB;
-        });
-        
-        table.tBodies[0].append(...sortedRows);
-    }
-
-    function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        function animateNumbers(element, start, end, duration) {
-            let range = end - start;
-            let current = start;
-            let increment = range / (duration / 10);
-            let stepTime = 10;
-            let timer = setInterval(() => {
-                current += increment;
-                if (current >= end) {
-                    current = end;
-                    clearInterval(timer);
-                }
-                element.textContent = `₦${Math.round(current).toLocaleString()}`;
-            }, stepTime);
-        }
-
-        function startCounter() {
-            let tables = ["roomsTable", "hallsTable", "openSpaceTable"];
-            tables.forEach(tableId => {
-                let table = document.getElementById(tableId);
-                if (table) {
-                    let rows = table.querySelectorAll("tbody tr");
-                    rows.forEach(row => {
-                        let cell = row.cells[1];
-                        if (cell) {
-                            let value = parseInt(cell.textContent.replace(/[₦,()a-zA-Z ]/g, ""), 10);
-                            if (!isNaN(value)) {
-                                cell.textContent = "₦0";
-                                animateNumbers(cell, 0, value, 2000);
-                            }
-                        }
-                    });
-                }
-            });
-        }
-
-        startCounter();
-    });
-
-</script>
 </body>
 </html>

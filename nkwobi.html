@@ -76,75 +76,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr><td>Big Isi Ewu</td><td>12,000</td></tr>
-        <tr><td>Isi Ewu</td><td>10,000</td></tr>
-        <tr><td>Nkwobi</td><td>4000</td></tr>
-        <tr><td>Vegetable Chicken</td><td>6000</td></tr>
-        <tr><td>Full Chicken Vegetable</td><td>18,000</td></tr>
-        <tr><td>Okwa chicken</td><td>6000</td></tr>
-        <tr><td>Snail Vegetable and Sauce</td><td>5000</td></tr>
-        <tr><td>Goat meat Vegetable</td><td>4000</td></tr>
+        <tr><td>Big Isi Ewu</td><td>#12000</td></tr>
+        <tr><td>Isi Ewu</td><td>#10000</td></tr>
+        <tr><td>Nkwobi</td><td>#4000</td></tr>
+        <tr><td>Vegetable Chicken</td><td>#6000</td></tr>
+        <tr><td>Full Chicken Vegetable</td><td>#18000</td></tr>
+        <tr><td>Okwa chicken</td><td>#6000</td></tr>
+        <tr><td>Snail Vegetable and Sauce</td><td>#5000</td></tr>
+        <tr><td>Goat meat Vegetable</td><td>#4000</td></tr>
     </tbody>
 </table>
     </div>
 
 
-<script>
-    function sortTable(column, tableId) {
-        let table = document.getElementById(tableId);
-        let rows = Array.from(table.rows).slice(1);
-        let sortedRows = rows.sort((rowA, rowB) => {
-            let cellA = rowA.cells[column].textContent.trim().replace(/[₦,]/g, '');
-            let cellB = rowB.cells[column].textContent.trim().replace(/[₦,]/g, '');
-            return isNaN(cellA) ? cellA.localeCompare(cellB) : cellA - cellB;
-        });
-        
-        table.tBodies[0].append(...sortedRows);
-    }
 
-    function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        function animateNumbers(element, start, end, duration) {
-            let range = end - start;
-            let current = start;
-            let increment = range / (duration / 10);
-            let stepTime = 10;
-            let timer = setInterval(() => {
-                current += increment;
-                if (current >= end) {
-                    current = end;
-                    clearInterval(timer);
-                }
-                element.textContent = `₦${Math.round(current).toLocaleString()}`;
-            }, stepTime);
-        }
-
-        function startCounter() {
-            let tables = ["roomsTable", "hallsTable", "openSpaceTable"];
-            tables.forEach(tableId => {
-                let table = document.getElementById(tableId);
-                if (table) {
-                    let rows = table.querySelectorAll("tbody tr");
-                    rows.forEach(row => {
-                        let cell = row.cells[1];
-                        if (cell) {
-                            let value = parseInt(cell.textContent.replace(/[₦,()a-zA-Z ]/g, ""), 10);
-                            if (!isNaN(value)) {
-                                cell.textContent = "₦0";
-                                animateNumbers(cell, 0, value, 2000);
-                            }
-                        }
-                    });
-                }
-            });
-        }
-
-        startCounter();
-    });
-
-</script>
 </body>
 </html>
